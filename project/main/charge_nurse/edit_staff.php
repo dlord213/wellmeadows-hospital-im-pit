@@ -14,7 +14,7 @@ if ($connection) {
 
   $staffs = $connection->query("SELECT DISTINCT staff.staff_number, staff.firstname || ' ' || staff.lastname AS staff_name, staff.staff_position, allocation.shift FROM allocation
   JOIN staffs.staff ON allocation.staff_number = staffs.staff.staff_number
-  WHERE ward_number = " . $ward_details['ward_number'])->fetchAll(PDO::FETCH_ASSOC);
+  WHERE ward_number = " . $ward_details['ward_number'] . " AND staff.staff_position != 'Charge Nurse'")->fetchAll(PDO::FETCH_ASSOC);
 
   $positions = array("Nurse", "Consultant", "Staff Nurse");
   $shifts = array("Early", "Late", "Night");
@@ -24,15 +24,29 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   try {
     $connection->beginTransaction();
 
-    $preparedStatementOne = $connection->prepare("UPDATE allocation SET shift = ? WHERE staff_number = ? AND ward_number = ?");
-    $preparedStatementOne->execute([
+    $stmtSelectCurrentAllocation = $connection->prepare("SELECT * FROM allocation WHERE staff_number = ? AND ward_number = ?");
+    $stmtSelectCurrentAllocation->execute([$_POST['selected_staff_number'], $ward_details['ward_number']]);
+    $currentAllocation = $stmtSelectCurrentAllocation->fetch(PDO::FETCH_ASSOC);
+
+    $stmtInsertIntoHistory = $connection->prepare("INSERT INTO allocation_history (allocation_id, ward_number, supply_id, staff_number, shift)
+      VALUES (?, ?, ?, ?, ?)");
+    $stmtInsertIntoHistory->execute([
+      $currentAllocation['allocation_id'],
+      $currentAllocation['ward_number'],
+      $currentAllocation['supply_id'],
+      $currentAllocation['staff_number'],
+      $currentAllocation['shift']
+    ]);
+
+    $stmtUpdateAllocation = $connection->prepare("UPDATE allocation SET shift = ? WHERE staff_number = ? AND ward_number = ?");
+    $stmtUpdateAllocation->execute([
       $_POST['selected_shift'],
       $_POST['selected_staff_number'],
       $ward_details['ward_number']
     ]);
 
-    $preparedStatementTwo = $connection->prepare("UPDATE staffs.staff SET staff_position = ? WHERE staff_number = ?;");
-    $preparedStatementTwo->execute([
+    $stmtUpdateStaff = $connection->prepare("UPDATE staffs.staff SET staff_position = ? WHERE staff_number = ?");
+    $stmtUpdateStaff->execute([
       $_POST['selected_position'],
       $_POST['selected_staff_number']
     ]);
@@ -47,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

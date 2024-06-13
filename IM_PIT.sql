@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.2
 
--- Started on 2024-06-01 11:16:01
+-- Started on 2024-06-13 15:36:03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,7 +19,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 9 (class 2615 OID 159343)
+-- TOC entry 8 (class 2615 OID 182482)
 -- Name: patients; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -29,7 +29,7 @@ CREATE SCHEMA patients;
 ALTER SCHEMA patients OWNER TO postgres;
 
 --
--- TOC entry 8 (class 2615 OID 159344)
+-- TOC entry 9 (class 2615 OID 182483)
 -- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -40,7 +40,7 @@ ALTER SCHEMA public OWNER TO postgres;
 
 --
 -- TOC entry 4997 (class 0 OID 0)
--- Dependencies: 8
+-- Dependencies: 9
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
 --
 
@@ -48,7 +48,7 @@ COMMENT ON SCHEMA public IS '';
 
 
 --
--- TOC entry 7 (class 2615 OID 159341)
+-- TOC entry 5 (class 2615 OID 182480)
 -- Name: staffs; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -58,7 +58,7 @@ CREATE SCHEMA staffs;
 ALTER SCHEMA staffs OWNER TO postgres;
 
 --
--- TOC entry 5 (class 2615 OID 159340)
+-- TOC entry 6 (class 2615 OID 182479)
 -- Name: users; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -68,7 +68,7 @@ CREATE SCHEMA users;
 ALTER SCHEMA users OWNER TO postgres;
 
 --
--- TOC entry 6 (class 2615 OID 159342)
+-- TOC entry 7 (class 2615 OID 182481)
 -- Name: wards; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -78,7 +78,7 @@ CREATE SCHEMA wards;
 ALTER SCHEMA wards OWNER TO postgres;
 
 --
--- TOC entry 261 (class 1255 OID 159603)
+-- TOC entry 260 (class 1255 OID 182748)
 -- Name: check_bed_limit(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -97,7 +97,7 @@ $$;
 ALTER FUNCTION public.check_bed_limit() OWNER TO postgres;
 
 --
--- TOC entry 260 (class 1255 OID 159605)
+-- TOC entry 265 (class 1255 OID 182750)
 -- Name: check_charge_nurse_in_ward(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -135,7 +135,7 @@ $$;
 ALTER FUNCTION public.check_charge_nurse_in_ward() OWNER TO postgres;
 
 --
--- TOC entry 259 (class 1255 OID 159601)
+-- TOC entry 259 (class 1255 OID 182746)
 -- Name: check_ward_limit(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -154,7 +154,7 @@ $$;
 ALTER FUNCTION public.check_ward_limit() OWNER TO postgres;
 
 --
--- TOC entry 258 (class 1255 OID 159600)
+-- TOC entry 258 (class 1255 OID 182745)
 -- Name: report_listing_of_medication_of_particular_patient(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -178,7 +178,7 @@ $$;
 ALTER FUNCTION public.report_listing_of_medication_of_particular_patient(patient_number_param integer) OWNER TO postgres;
 
 --
--- TOC entry 257 (class 1255 OID 159599)
+-- TOC entry 257 (class 1255 OID 182744)
 -- Name: report_listing_of_particular_ward(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -203,7 +203,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 238 (class 1259 OID 159454)
+-- TOC entry 238 (class 1259 OID 182593)
 -- Name: doctor; Type: TABLE; Schema: patients; Owner: postgres
 --
 
@@ -218,7 +218,7 @@ CREATE TABLE patients.doctor (
 ALTER TABLE patients.doctor OWNER TO postgres;
 
 --
--- TOC entry 237 (class 1259 OID 159453)
+-- TOC entry 237 (class 1259 OID 182592)
 -- Name: doctor_doctor_id_seq; Type: SEQUENCE; Schema: patients; Owner: postgres
 --
 
@@ -233,7 +233,7 @@ ALTER TABLE patients.doctor ALTER COLUMN doctor_id ADD GENERATED ALWAYS AS IDENT
 
 
 --
--- TOC entry 236 (class 1259 OID 159446)
+-- TOC entry 236 (class 1259 OID 182585)
 -- Name: kin; Type: TABLE; Schema: patients; Owner: postgres
 --
 
@@ -249,7 +249,7 @@ CREATE TABLE patients.kin (
 ALTER TABLE patients.kin OWNER TO postgres;
 
 --
--- TOC entry 235 (class 1259 OID 159445)
+-- TOC entry 235 (class 1259 OID 182584)
 -- Name: kin_kin_id_seq; Type: SEQUENCE; Schema: patients; Owner: postgres
 --
 
@@ -264,7 +264,7 @@ ALTER TABLE patients.kin ALTER COLUMN kin_id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- TOC entry 240 (class 1259 OID 159462)
+-- TOC entry 240 (class 1259 OID 182601)
 -- Name: patient; Type: TABLE; Schema: patients; Owner: postgres
 --
 
@@ -286,7 +286,7 @@ CREATE TABLE patients.patient (
 ALTER TABLE patients.patient OWNER TO postgres;
 
 --
--- TOC entry 239 (class 1259 OID 159461)
+-- TOC entry 239 (class 1259 OID 182600)
 -- Name: patient_patient_number_seq; Type: SEQUENCE; Schema: patients; Owner: postgres
 --
 
@@ -301,7 +301,7 @@ ALTER TABLE patients.patient ALTER COLUMN patient_number ADD GENERATED ALWAYS AS
 
 
 --
--- TOC entry 234 (class 1259 OID 159423)
+-- TOC entry 234 (class 1259 OID 182562)
 -- Name: allocation; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -317,7 +317,7 @@ CREATE TABLE public.allocation (
 ALTER TABLE public.allocation OWNER TO postgres;
 
 --
--- TOC entry 233 (class 1259 OID 159422)
+-- TOC entry 233 (class 1259 OID 182561)
 -- Name: allocation_allocation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -332,7 +332,7 @@ ALTER TABLE public.allocation ALTER COLUMN allocation_id ADD GENERATED BY DEFAUL
 
 
 --
--- TOC entry 242 (class 1259 OID 159480)
+-- TOC entry 242 (class 1259 OID 182619)
 -- Name: appointment; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -348,7 +348,7 @@ CREATE TABLE public.appointment (
 ALTER TABLE public.appointment OWNER TO postgres;
 
 --
--- TOC entry 241 (class 1259 OID 159479)
+-- TOC entry 241 (class 1259 OID 182618)
 -- Name: appointment_appointment_number_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -363,7 +363,7 @@ ALTER TABLE public.appointment ALTER COLUMN appointment_number ADD GENERATED ALW
 
 
 --
--- TOC entry 247 (class 1259 OID 159524)
+-- TOC entry 247 (class 1259 OID 182663)
 -- Name: drug; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -379,7 +379,7 @@ CREATE TABLE public.drug (
 ALTER TABLE public.drug OWNER TO postgres;
 
 --
--- TOC entry 246 (class 1259 OID 159523)
+-- TOC entry 246 (class 1259 OID 182662)
 -- Name: drug_drug_number_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -394,7 +394,7 @@ ALTER TABLE public.drug ALTER COLUMN drug_number ADD GENERATED ALWAYS AS IDENTIT
 
 
 --
--- TOC entry 245 (class 1259 OID 159508)
+-- TOC entry 245 (class 1259 OID 182647)
 -- Name: inpatient; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -413,7 +413,7 @@ CREATE TABLE public.inpatient (
 ALTER TABLE public.inpatient OWNER TO postgres;
 
 --
--- TOC entry 244 (class 1259 OID 159507)
+-- TOC entry 244 (class 1259 OID 182646)
 -- Name: inpatient_bed_number_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -428,7 +428,7 @@ ALTER TABLE public.inpatient ALTER COLUMN bed_number ADD GENERATED ALWAYS AS IDE
 
 
 --
--- TOC entry 248 (class 1259 OID 159531)
+-- TOC entry 248 (class 1259 OID 182670)
 -- Name: medication; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -443,7 +443,7 @@ CREATE TABLE public.medication (
 ALTER TABLE public.medication OWNER TO postgres;
 
 --
--- TOC entry 243 (class 1259 OID 159497)
+-- TOC entry 243 (class 1259 OID 182636)
 -- Name: outpatient; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -455,7 +455,7 @@ CREATE TABLE public.outpatient (
 ALTER TABLE public.outpatient OWNER TO postgres;
 
 --
--- TOC entry 254 (class 1259 OID 159594)
+-- TOC entry 256 (class 1259 OID 182739)
 -- Name: report_listing_of_outpatient; Type: VIEW; Schema: public; Owner: postgres
 --
 
@@ -479,7 +479,7 @@ CREATE VIEW public.report_listing_of_outpatient AS
 ALTER VIEW public.report_listing_of_outpatient OWNER TO postgres;
 
 --
--- TOC entry 232 (class 1259 OID 159400)
+-- TOC entry 232 (class 1259 OID 182539)
 -- Name: staff; Type: TABLE; Schema: staffs; Owner: postgres
 --
 
@@ -503,7 +503,7 @@ CREATE TABLE staffs.staff (
 ALTER TABLE staffs.staff OWNER TO postgres;
 
 --
--- TOC entry 253 (class 1259 OID 159589)
+-- TOC entry 255 (class 1259 OID 182734)
 -- Name: report_listing_to_each_ward; Type: VIEW; Schema: public; Owner: postgres
 --
 
@@ -530,7 +530,7 @@ CREATE VIEW public.report_listing_to_each_ward AS
 ALTER VIEW public.report_listing_to_each_ward OWNER TO postgres;
 
 --
--- TOC entry 250 (class 1259 OID 159547)
+-- TOC entry 250 (class 1259 OID 182686)
 -- Name: requisition; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -544,7 +544,7 @@ CREATE TABLE public.requisition (
 ALTER TABLE public.requisition OWNER TO postgres;
 
 --
--- TOC entry 249 (class 1259 OID 159546)
+-- TOC entry 249 (class 1259 OID 182685)
 -- Name: requisition_requisition_number_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -559,7 +559,7 @@ ALTER TABLE public.requisition ALTER COLUMN requisition_number ADD GENERATED ALW
 
 
 --
--- TOC entry 228 (class 1259 OID 159384)
+-- TOC entry 228 (class 1259 OID 182523)
 -- Name: contract; Type: TABLE; Schema: staffs; Owner: postgres
 --
 
@@ -576,7 +576,7 @@ CREATE TABLE staffs.contract (
 ALTER TABLE staffs.contract OWNER TO postgres;
 
 --
--- TOC entry 227 (class 1259 OID 159383)
+-- TOC entry 227 (class 1259 OID 182522)
 -- Name: contract_contract_id_seq; Type: SEQUENCE; Schema: staffs; Owner: postgres
 --
 
@@ -591,7 +591,7 @@ ALTER TABLE staffs.contract ALTER COLUMN contract_id ADD GENERATED ALWAYS AS IDE
 
 
 --
--- TOC entry 226 (class 1259 OID 159376)
+-- TOC entry 226 (class 1259 OID 182515)
 -- Name: experience; Type: TABLE; Schema: staffs; Owner: postgres
 --
 
@@ -607,7 +607,7 @@ CREATE TABLE staffs.experience (
 ALTER TABLE staffs.experience OWNER TO postgres;
 
 --
--- TOC entry 225 (class 1259 OID 159375)
+-- TOC entry 225 (class 1259 OID 182514)
 -- Name: experience_experience_id_seq; Type: SEQUENCE; Schema: staffs; Owner: postgres
 --
 
@@ -622,7 +622,7 @@ ALTER TABLE staffs.experience ALTER COLUMN experience_id ADD GENERATED ALWAYS AS
 
 
 --
--- TOC entry 230 (class 1259 OID 159392)
+-- TOC entry 230 (class 1259 OID 182531)
 -- Name: qualification; Type: TABLE; Schema: staffs; Owner: postgres
 --
 
@@ -637,7 +637,7 @@ CREATE TABLE staffs.qualification (
 ALTER TABLE staffs.qualification OWNER TO postgres;
 
 --
--- TOC entry 229 (class 1259 OID 159391)
+-- TOC entry 229 (class 1259 OID 182530)
 -- Name: qualification_qualification_id_seq; Type: SEQUENCE; Schema: staffs; Owner: postgres
 --
 
@@ -652,7 +652,7 @@ ALTER TABLE staffs.qualification ALTER COLUMN qualification_id ADD GENERATED ALW
 
 
 --
--- TOC entry 231 (class 1259 OID 159399)
+-- TOC entry 231 (class 1259 OID 182538)
 -- Name: staff_staff_number_seq; Type: SEQUENCE; Schema: staffs; Owner: postgres
 --
 
@@ -667,7 +667,7 @@ ALTER TABLE staffs.staff ALTER COLUMN staff_number ADD GENERATED ALWAYS AS IDENT
 
 
 --
--- TOC entry 252 (class 1259 OID 159571)
+-- TOC entry 254 (class 1259 OID 182715)
 -- Name: patient_user; Type: TABLE; Schema: users; Owner: postgres
 --
 
@@ -682,7 +682,7 @@ CREATE TABLE users.patient_user (
 ALTER TABLE users.patient_user OWNER TO postgres;
 
 --
--- TOC entry 251 (class 1259 OID 159570)
+-- TOC entry 253 (class 1259 OID 182714)
 -- Name: patient_user_patient_user_id_seq; Type: SEQUENCE; Schema: users; Owner: postgres
 --
 
@@ -697,7 +697,7 @@ ALTER TABLE users.patient_user ALTER COLUMN patient_user_id ADD GENERATED ALWAYS
 
 
 --
--- TOC entry 256 (class 1259 OID 159629)
+-- TOC entry 252 (class 1259 OID 182697)
 -- Name: staff_user; Type: TABLE; Schema: users; Owner: postgres
 --
 
@@ -713,7 +713,7 @@ CREATE TABLE users.staff_user (
 ALTER TABLE users.staff_user OWNER TO postgres;
 
 --
--- TOC entry 255 (class 1259 OID 159628)
+-- TOC entry 251 (class 1259 OID 182696)
 -- Name: staff_user_staff_user_id_seq; Type: SEQUENCE; Schema: users; Owner: postgres
 --
 
@@ -728,7 +728,7 @@ ALTER TABLE users.staff_user ALTER COLUMN staff_user_id ADD GENERATED ALWAYS AS 
 
 
 --
--- TOC entry 220 (class 1259 OID 159346)
+-- TOC entry 220 (class 1259 OID 182485)
 -- Name: supplier; Type: TABLE; Schema: wards; Owner: postgres
 --
 
@@ -744,7 +744,7 @@ CREATE TABLE wards.supplier (
 ALTER TABLE wards.supplier OWNER TO postgres;
 
 --
--- TOC entry 219 (class 1259 OID 159345)
+-- TOC entry 219 (class 1259 OID 182484)
 -- Name: supplier_supplier_number_seq; Type: SEQUENCE; Schema: wards; Owner: postgres
 --
 
@@ -759,7 +759,7 @@ ALTER TABLE wards.supplier ALTER COLUMN supplier_number ADD GENERATED ALWAYS AS 
 
 
 --
--- TOC entry 222 (class 1259 OID 159354)
+-- TOC entry 222 (class 1259 OID 182493)
 -- Name: supplies; Type: TABLE; Schema: wards; Owner: postgres
 --
 
@@ -776,7 +776,7 @@ CREATE TABLE wards.supplies (
 ALTER TABLE wards.supplies OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 159353)
+-- TOC entry 221 (class 1259 OID 182492)
 -- Name: supplies_supply_id_seq; Type: SEQUENCE; Schema: wards; Owner: postgres
 --
 
@@ -791,7 +791,7 @@ ALTER TABLE wards.supplies ALTER COLUMN supply_id ADD GENERATED BY DEFAULT AS ID
 
 
 --
--- TOC entry 224 (class 1259 OID 159362)
+-- TOC entry 224 (class 1259 OID 182501)
 -- Name: ward; Type: TABLE; Schema: wards; Owner: postgres
 --
 
@@ -808,7 +808,7 @@ CREATE TABLE wards.ward (
 ALTER TABLE wards.ward OWNER TO postgres;
 
 --
--- TOC entry 223 (class 1259 OID 159361)
+-- TOC entry 223 (class 1259 OID 182500)
 -- Name: ward_ward_number_seq; Type: SEQUENCE; Schema: wards; Owner: postgres
 --
 
@@ -823,7 +823,7 @@ ALTER TABLE wards.ward ALTER COLUMN ward_number ADD GENERATED BY DEFAULT AS IDEN
 
 
 --
--- TOC entry 4974 (class 0 OID 159454)
+-- TOC entry 4974 (class 0 OID 182593)
 -- Dependencies: 238
 -- Data for Name: doctor; Type: TABLE DATA; Schema: patients; Owner: postgres
 --
@@ -838,7 +838,7 @@ COPY patients.doctor (doctor_id, fullname, address, telephone_number) FROM stdin
 
 
 --
--- TOC entry 4972 (class 0 OID 159446)
+-- TOC entry 4972 (class 0 OID 182585)
 -- Dependencies: 236
 -- Data for Name: kin; Type: TABLE DATA; Schema: patients; Owner: postgres
 --
@@ -864,7 +864,7 @@ COPY patients.kin (kin_id, kin_name, relationship, address, telephone_number) FR
 
 
 --
--- TOC entry 4976 (class 0 OID 159462)
+-- TOC entry 4976 (class 0 OID 182601)
 -- Dependencies: 240
 -- Data for Name: patient; Type: TABLE DATA; Schema: patients; Owner: postgres
 --
@@ -890,13 +890,28 @@ COPY patients.patient (patient_number, firstname, lastname, address, sex, date_o
 
 
 --
--- TOC entry 4970 (class 0 OID 159423)
+-- TOC entry 4970 (class 0 OID 182562)
 -- Dependencies: 234
 -- Data for Name: allocation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.allocation (allocation_id, ward_number, supply_id, staff_number, shift) FROM stdin;
+1	1	\N	39	Early
+2	2	\N	10	Early
+3	3	\N	3	Early
+4	4	\N	24	Early
+5	5	\N	14	Early
+6	6	\N	6	Early
+7	7	\N	11	Early
+8	8	\N	31	Early
+9	9	\N	37	Early
+11	11	\N	28	Early
+12	12	\N	4	Early
 13	13	\N	8	Early
+14	14	\N	34	Early
+15	15	\N	18	Early
+16	16	\N	19	Early
+17	17	\N	23	Early
 18	1	\N	5	Early
 19	1	\N	15	Late
 20	1	\N	20	Night
@@ -938,10 +953,8 @@ COPY public.allocation (allocation_id, ward_number, supply_id, staff_number, shi
 56	9	\N	36	Late
 57	9	\N	38	Night
 58	9	\N	40	Early
-59	10	\N	2	Night
 60	10	\N	9	Early
 61	10	\N	12	Late
-62	10	\N	16	Night
 63	10	\N	21	Early
 64	11	\N	7	Night
 65	11	\N	13	Early
@@ -974,29 +987,16 @@ COPY public.allocation (allocation_id, ward_number, supply_id, staff_number, shi
 92	17	\N	36	Late
 93	17	\N	38	Night
 94	17	\N	40	Early
-1	1	2	39	Early
-2	2	3	10	Early
-3	3	4	3	Early
-4	4	5	24	Early
-5	5	6	14	Early
-6	6	7	6	Early
-7	7	8	11	Early
-8	8	9	31	Early
-9	9	1	37	Early
-11	11	2	28	Early
-12	12	4	4	Early
-14	14	5	34	Early
-15	15	6	18	Early
-16	16	7	19	Early
-17	17	8	23	Early
-10	10	3	1	Night
-95	10	\N	2	Night
-96	10	\N	2	Late
+95	10	\N	13	Night
+96	10	\N	15	Night
+10	10	\N	1	Late
+62	10	\N	16	Night
+59	10	\N	2	Late
 \.
 
 
 --
--- TOC entry 4978 (class 0 OID 159480)
+-- TOC entry 4978 (class 0 OID 182619)
 -- Dependencies: 242
 -- Data for Name: appointment; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1022,7 +1022,7 @@ COPY public.appointment (appointment_number, staff_number, patient_number, appoi
 
 
 --
--- TOC entry 4983 (class 0 OID 159524)
+-- TOC entry 4983 (class 0 OID 182663)
 -- Dependencies: 247
 -- Data for Name: drug; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1052,36 +1052,32 @@ COPY public.drug (drug_number, drug_name, description, dosage, method_of_admin) 
 
 
 --
--- TOC entry 4981 (class 0 OID 159508)
+-- TOC entry 4981 (class 0 OID 182647)
 -- Dependencies: 245
 -- Data for Name: inpatient; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.inpatient (bed_number, allocation_id, appointment_number, waiting_list_date, expected_stay, date_placed, date_expected_to_leave, date_actual_left) FROM stdin;
 1	44	4	\N	\N	\N	\N	\N
-2	40	3	2003-12-06	6	2003-12-07	\N	\N
-3	40	6	2003-12-06	10	2003-12-09	\N	\N
-5	10	4	2003-12-06	4	2003-12-06	\N	\N
-6	10	1	2024-06-07	17	2024-06-06	\N	\N
 \.
 
 
 --
--- TOC entry 4984 (class 0 OID 159531)
+-- TOC entry 4984 (class 0 OID 182670)
 -- Dependencies: 248
 -- Data for Name: medication; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.medication (bed_number, drug_number, starting_date, finished_date) FROM stdin;
 1	2	2024-04-10	2024-04-15
-2	3	2003-12-06	2003-12-08
-2	7	2003-12-06	2003-12-08
-2	9	2003-12-06	2003-12-08
+1	3	2003-12-06	2003-12-08
+1	7	2003-12-06	2003-12-08
+1	9	2003-12-06	2003-12-08
 \.
 
 
 --
--- TOC entry 4979 (class 0 OID 159497)
+-- TOC entry 4979 (class 0 OID 182636)
 -- Dependencies: 243
 -- Data for Name: outpatient; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1092,7 +1088,7 @@ COPY public.outpatient (appointment_number) FROM stdin;
 
 
 --
--- TOC entry 4986 (class 0 OID 159547)
+-- TOC entry 4986 (class 0 OID 182686)
 -- Dependencies: 250
 -- Data for Name: requisition; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1102,7 +1098,7 @@ COPY public.requisition (requisition_number, bed_number, requisitioned_date) FRO
 
 
 --
--- TOC entry 4964 (class 0 OID 159384)
+-- TOC entry 4964 (class 0 OID 182523)
 -- Dependencies: 228
 -- Data for Name: contract; Type: TABLE DATA; Schema: staffs; Owner: postgres
 --
@@ -1152,7 +1148,7 @@ COPY staffs.contract (contract_id, hours_worked_per_week, paid_type, contract_ty
 
 
 --
--- TOC entry 4962 (class 0 OID 159376)
+-- TOC entry 4962 (class 0 OID 182515)
 -- Dependencies: 226
 -- Data for Name: experience; Type: TABLE DATA; Schema: staffs; Owner: postgres
 --
@@ -1202,7 +1198,7 @@ COPY staffs.experience (experience_id, starting_date, finished_date, experience_
 
 
 --
--- TOC entry 4966 (class 0 OID 159392)
+-- TOC entry 4966 (class 0 OID 182531)
 -- Dependencies: 230
 -- Data for Name: qualification; Type: TABLE DATA; Schema: staffs; Owner: postgres
 --
@@ -1252,13 +1248,12 @@ COPY staffs.qualification (qualification_id, qualification_date, qualification_t
 
 
 --
--- TOC entry 4968 (class 0 OID 159400)
+-- TOC entry 4968 (class 0 OID 182539)
 -- Dependencies: 232
 -- Data for Name: staff; Type: TABLE DATA; Schema: staffs; Owner: postgres
 --
 
 COPY staffs.staff (staff_number, firstname, lastname, staff_position, address, sex, date_of_birth, telephone_number, national_insurance_number, current_salary, experience_id, contract_id, qualification_id) FROM stdin;
-2	Jane	Smith	Manager	456 Elm St	F	1985-02-02	234-567-8901	DEF234567	60000	2	2	2
 3	Michael	Johnson	Charge Nurse	789 Oak St	M	1980-03-03	345-678-9012	GHI345678	70000	3	3	3
 4	Emily	Brown	Charge Nurse	123 Pine St	F	1975-04-04	456-789-0123	JKL456789	80000	4	4	4
 5	David	Martinez	Consultant	456 Cedar St	M	1970-05-05	567-890-1234	MNO567890	90000	5	5	5
@@ -1272,7 +1267,6 @@ COPY staffs.staff (staff_number, firstname, lastname, staff_position, address, s
 13	Ryan	Rivera	Coordinator	123 Oakwood St	M	1930-01-01	765-432-1098	KLM765432	170000	13	13	13
 14	Melissa	Scott	Charge Nurse	456 Pine St	F	1925-02-02	876-543-2109	NOP876543	180000	14	14	14
 15	Justin	Nguyen	Developer	789 Cedar St	M	1920-03-03	987-654-3210	QRS987654	190000	15	15	15
-16	Laura	Kim	Analyst	123 Oak St	F	1915-04-04	210-987-6543	TUV210987	200000	16	16	16
 17	Eric	Lee	Consultant	456 Maple St	M	1910-05-05	321-098-7654	WXY321098	210000	17	17	17
 18	Rachel	Tran	Charge Nurse	789 Elm St	F	1905-06-06	432-109-8765	YZA432109	220000	18	18	18
 19	Brandon	Wong	Charge Nurse	123 Birch St	M	1900-07-07	543-210-9876	BCD543210	230000	19	19	19
@@ -1297,13 +1291,15 @@ COPY staffs.staff (staff_number, firstname, lastname, staff_position, address, s
 38	Rachel	Tran	Consultant	789 Elm St	F	1905-06-06	432-109-8765	YZA432109	220000	38	38	38
 39	Brandon	Wong	Charge Nurse	123 Birch St	M	1900-07-07	543-210-9876	BCD543210	230000	39	39	39
 40	Stephanie	Chen	Medical Director	456 Pinecrest St	F	1895-08-08	654-321-0987	EFG654321	240000	40	40	40
-1	John	Doe	Nurse	123 Main St	M	1990-01-01	123-456-7890	ABC123456	50000	1	1	1
+1	John	Doe	Charge Nurse	123 Main St	M	1990-01-01	123-456-7890	ABC123456	50000	1	1	1
+16	Laura	Kim	Consultant	123 Oak St	F	1915-04-04	210-987-6543	TUV210987	200000	16	16	16
+2	Jane	Smith	Consultant	456 Elm St	F	1985-02-02	234-567-8901	DEF234567	60000	2	2	2
 \.
 
 
 --
--- TOC entry 4988 (class 0 OID 159571)
--- Dependencies: 252
+-- TOC entry 4990 (class 0 OID 182715)
+-- Dependencies: 254
 -- Data for Name: patient_user; Type: TABLE DATA; Schema: users; Owner: postgres
 --
 
@@ -1312,8 +1308,8 @@ COPY users.patient_user (patient_user_id, username, _password, patient_number) F
 
 
 --
--- TOC entry 4990 (class 0 OID 159629)
--- Dependencies: 256
+-- TOC entry 4988 (class 0 OID 182697)
+-- Dependencies: 252
 -- Data for Name: staff_user; Type: TABLE DATA; Schema: users; Owner: postgres
 --
 
@@ -1322,11 +1318,12 @@ COPY users.staff_user (staff_user_id, username, _password, staff_number, doctor_
 2	johndoe24	dlord213	1	\N
 3	markjohnson666	dlord213	\N	1
 4	lisasmith24	dlord213	\N	2
+5	racheltran24	dlord213	38	\N
 \.
 
 
 --
--- TOC entry 4956 (class 0 OID 159346)
+-- TOC entry 4956 (class 0 OID 182485)
 -- Dependencies: 220
 -- Data for Name: supplier; Type: TABLE DATA; Schema: wards; Owner: postgres
 --
@@ -1356,7 +1353,7 @@ COPY wards.supplier (supplier_number, supplier_name, telephone_number, address, 
 
 
 --
--- TOC entry 4958 (class 0 OID 159354)
+-- TOC entry 4958 (class 0 OID 182493)
 -- Dependencies: 222
 -- Data for Name: supplies; Type: TABLE DATA; Schema: wards; Owner: postgres
 --
@@ -1386,7 +1383,7 @@ COPY wards.supplies (supply_id, item_name, description, quantity_in_stock, reord
 
 
 --
--- TOC entry 4960 (class 0 OID 159362)
+-- TOC entry 4960 (class 0 OID 182501)
 -- Dependencies: 224
 -- Data for Name: ward; Type: TABLE DATA; Schema: wards; Owner: postgres
 --
@@ -1413,7 +1410,7 @@ COPY wards.ward (ward_number, ward_name, ward_location, number_of_beds, telephon
 
 
 --
--- TOC entry 5012 (class 0 OID 0)
+-- TOC entry 5023 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: doctor_doctor_id_seq; Type: SEQUENCE SET; Schema: patients; Owner: postgres
 --
@@ -1422,7 +1419,7 @@ SELECT pg_catalog.setval('patients.doctor_doctor_id_seq', 5, true);
 
 
 --
--- TOC entry 5013 (class 0 OID 0)
+-- TOC entry 5024 (class 0 OID 0)
 -- Dependencies: 235
 -- Name: kin_kin_id_seq; Type: SEQUENCE SET; Schema: patients; Owner: postgres
 --
@@ -1431,7 +1428,7 @@ SELECT pg_catalog.setval('patients.kin_kin_id_seq', 16, true);
 
 
 --
--- TOC entry 5014 (class 0 OID 0)
+-- TOC entry 5025 (class 0 OID 0)
 -- Dependencies: 239
 -- Name: patient_patient_number_seq; Type: SEQUENCE SET; Schema: patients; Owner: postgres
 --
@@ -1440,7 +1437,7 @@ SELECT pg_catalog.setval('patients.patient_patient_number_seq', 16, true);
 
 
 --
--- TOC entry 5015 (class 0 OID 0)
+-- TOC entry 5026 (class 0 OID 0)
 -- Dependencies: 233
 -- Name: allocation_allocation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1449,7 +1446,7 @@ SELECT pg_catalog.setval('public.allocation_allocation_id_seq', 96, true);
 
 
 --
--- TOC entry 5016 (class 0 OID 0)
+-- TOC entry 5027 (class 0 OID 0)
 -- Dependencies: 241
 -- Name: appointment_appointment_number_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1458,7 +1455,7 @@ SELECT pg_catalog.setval('public.appointment_appointment_number_seq', 16, true);
 
 
 --
--- TOC entry 5017 (class 0 OID 0)
+-- TOC entry 5028 (class 0 OID 0)
 -- Dependencies: 246
 -- Name: drug_drug_number_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1467,16 +1464,16 @@ SELECT pg_catalog.setval('public.drug_drug_number_seq', 20, true);
 
 
 --
--- TOC entry 5018 (class 0 OID 0)
+-- TOC entry 5029 (class 0 OID 0)
 -- Dependencies: 244
 -- Name: inpatient_bed_number_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.inpatient_bed_number_seq', 6, true);
+SELECT pg_catalog.setval('public.inpatient_bed_number_seq', 1, true);
 
 
 --
--- TOC entry 5019 (class 0 OID 0)
+-- TOC entry 5030 (class 0 OID 0)
 -- Dependencies: 249
 -- Name: requisition_requisition_number_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1485,7 +1482,7 @@ SELECT pg_catalog.setval('public.requisition_requisition_number_seq', 1, false);
 
 
 --
--- TOC entry 5020 (class 0 OID 0)
+-- TOC entry 5031 (class 0 OID 0)
 -- Dependencies: 227
 -- Name: contract_contract_id_seq; Type: SEQUENCE SET; Schema: staffs; Owner: postgres
 --
@@ -1494,7 +1491,7 @@ SELECT pg_catalog.setval('staffs.contract_contract_id_seq', 40, true);
 
 
 --
--- TOC entry 5021 (class 0 OID 0)
+-- TOC entry 5032 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: experience_experience_id_seq; Type: SEQUENCE SET; Schema: staffs; Owner: postgres
 --
@@ -1503,7 +1500,7 @@ SELECT pg_catalog.setval('staffs.experience_experience_id_seq', 40, true);
 
 
 --
--- TOC entry 5022 (class 0 OID 0)
+-- TOC entry 5033 (class 0 OID 0)
 -- Dependencies: 229
 -- Name: qualification_qualification_id_seq; Type: SEQUENCE SET; Schema: staffs; Owner: postgres
 --
@@ -1512,7 +1509,7 @@ SELECT pg_catalog.setval('staffs.qualification_qualification_id_seq', 40, true);
 
 
 --
--- TOC entry 5023 (class 0 OID 0)
+-- TOC entry 5034 (class 0 OID 0)
 -- Dependencies: 231
 -- Name: staff_staff_number_seq; Type: SEQUENCE SET; Schema: staffs; Owner: postgres
 --
@@ -1521,8 +1518,8 @@ SELECT pg_catalog.setval('staffs.staff_staff_number_seq', 40, true);
 
 
 --
--- TOC entry 5024 (class 0 OID 0)
--- Dependencies: 251
+-- TOC entry 5035 (class 0 OID 0)
+-- Dependencies: 253
 -- Name: patient_user_patient_user_id_seq; Type: SEQUENCE SET; Schema: users; Owner: postgres
 --
 
@@ -1530,16 +1527,16 @@ SELECT pg_catalog.setval('users.patient_user_patient_user_id_seq', 1, false);
 
 
 --
--- TOC entry 5025 (class 0 OID 0)
--- Dependencies: 255
+-- TOC entry 5036 (class 0 OID 0)
+-- Dependencies: 251
 -- Name: staff_user_staff_user_id_seq; Type: SEQUENCE SET; Schema: users; Owner: postgres
 --
 
-SELECT pg_catalog.setval('users.staff_user_staff_user_id_seq', 4, true);
+SELECT pg_catalog.setval('users.staff_user_staff_user_id_seq', 5, true);
 
 
 --
--- TOC entry 5026 (class 0 OID 0)
+-- TOC entry 5037 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: supplier_supplier_number_seq; Type: SEQUENCE SET; Schema: wards; Owner: postgres
 --
@@ -1548,7 +1545,7 @@ SELECT pg_catalog.setval('wards.supplier_supplier_number_seq', 20, true);
 
 
 --
--- TOC entry 5027 (class 0 OID 0)
+-- TOC entry 5038 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: supplies_supply_id_seq; Type: SEQUENCE SET; Schema: wards; Owner: postgres
 --
@@ -1557,7 +1554,7 @@ SELECT pg_catalog.setval('wards.supplies_supply_id_seq', 20, true);
 
 
 --
--- TOC entry 5028 (class 0 OID 0)
+-- TOC entry 5039 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: ward_ward_number_seq; Type: SEQUENCE SET; Schema: wards; Owner: postgres
 --
@@ -1566,7 +1563,7 @@ SELECT pg_catalog.setval('wards.ward_ward_number_seq', 17, true);
 
 
 --
--- TOC entry 4764 (class 2606 OID 159460)
+-- TOC entry 4764 (class 2606 OID 182599)
 -- Name: doctor doctor_pkey; Type: CONSTRAINT; Schema: patients; Owner: postgres
 --
 
@@ -1575,7 +1572,7 @@ ALTER TABLE ONLY patients.doctor
 
 
 --
--- TOC entry 4762 (class 2606 OID 159452)
+-- TOC entry 4762 (class 2606 OID 182591)
 -- Name: kin kin_pkey; Type: CONSTRAINT; Schema: patients; Owner: postgres
 --
 
@@ -1584,7 +1581,7 @@ ALTER TABLE ONLY patients.kin
 
 
 --
--- TOC entry 4767 (class 2606 OID 159468)
+-- TOC entry 4767 (class 2606 OID 182607)
 -- Name: patient patient_pkey; Type: CONSTRAINT; Schema: patients; Owner: postgres
 --
 
@@ -1593,7 +1590,7 @@ ALTER TABLE ONLY patients.patient
 
 
 --
--- TOC entry 4759 (class 2606 OID 159429)
+-- TOC entry 4759 (class 2606 OID 182568)
 -- Name: allocation allocation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1602,7 +1599,7 @@ ALTER TABLE ONLY public.allocation
 
 
 --
--- TOC entry 4770 (class 2606 OID 159486)
+-- TOC entry 4770 (class 2606 OID 182625)
 -- Name: appointment appointment_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1611,7 +1608,7 @@ ALTER TABLE ONLY public.appointment
 
 
 --
--- TOC entry 4777 (class 2606 OID 159530)
+-- TOC entry 4777 (class 2606 OID 182669)
 -- Name: drug drug_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1620,7 +1617,7 @@ ALTER TABLE ONLY public.drug
 
 
 --
--- TOC entry 4775 (class 2606 OID 159512)
+-- TOC entry 4775 (class 2606 OID 182651)
 -- Name: inpatient inpatient_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1629,7 +1626,7 @@ ALTER TABLE ONLY public.inpatient
 
 
 --
--- TOC entry 4779 (class 2606 OID 159535)
+-- TOC entry 4779 (class 2606 OID 182674)
 -- Name: medication medication_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1638,7 +1635,7 @@ ALTER TABLE ONLY public.medication
 
 
 --
--- TOC entry 4772 (class 2606 OID 159501)
+-- TOC entry 4772 (class 2606 OID 182640)
 -- Name: outpatient outpatient_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1647,7 +1644,7 @@ ALTER TABLE ONLY public.outpatient
 
 
 --
--- TOC entry 4782 (class 2606 OID 159551)
+-- TOC entry 4782 (class 2606 OID 182690)
 -- Name: requisition requisition_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1656,7 +1653,7 @@ ALTER TABLE ONLY public.requisition
 
 
 --
--- TOC entry 4752 (class 2606 OID 159390)
+-- TOC entry 4752 (class 2606 OID 182529)
 -- Name: contract contract_pkey; Type: CONSTRAINT; Schema: staffs; Owner: postgres
 --
 
@@ -1665,7 +1662,7 @@ ALTER TABLE ONLY staffs.contract
 
 
 --
--- TOC entry 4750 (class 2606 OID 159382)
+-- TOC entry 4750 (class 2606 OID 182521)
 -- Name: experience experience_pkey; Type: CONSTRAINT; Schema: staffs; Owner: postgres
 --
 
@@ -1674,7 +1671,7 @@ ALTER TABLE ONLY staffs.experience
 
 
 --
--- TOC entry 4754 (class 2606 OID 159398)
+-- TOC entry 4754 (class 2606 OID 182537)
 -- Name: qualification qualification_pkey; Type: CONSTRAINT; Schema: staffs; Owner: postgres
 --
 
@@ -1683,7 +1680,7 @@ ALTER TABLE ONLY staffs.qualification
 
 
 --
--- TOC entry 4757 (class 2606 OID 159406)
+-- TOC entry 4757 (class 2606 OID 182545)
 -- Name: staff staff_pkey; Type: CONSTRAINT; Schema: staffs; Owner: postgres
 --
 
@@ -1692,7 +1689,7 @@ ALTER TABLE ONLY staffs.staff
 
 
 --
--- TOC entry 4784 (class 2606 OID 159577)
+-- TOC entry 4786 (class 2606 OID 182721)
 -- Name: patient_user patient_user_pkey; Type: CONSTRAINT; Schema: users; Owner: postgres
 --
 
@@ -1701,7 +1698,7 @@ ALTER TABLE ONLY users.patient_user
 
 
 --
--- TOC entry 4786 (class 2606 OID 159635)
+-- TOC entry 4784 (class 2606 OID 182703)
 -- Name: staff_user staff_user_pkey; Type: CONSTRAINT; Schema: users; Owner: postgres
 --
 
@@ -1710,7 +1707,7 @@ ALTER TABLE ONLY users.staff_user
 
 
 --
--- TOC entry 4743 (class 2606 OID 159352)
+-- TOC entry 4743 (class 2606 OID 182491)
 -- Name: supplier supplier_pkey; Type: CONSTRAINT; Schema: wards; Owner: postgres
 --
 
@@ -1719,7 +1716,7 @@ ALTER TABLE ONLY wards.supplier
 
 
 --
--- TOC entry 4745 (class 2606 OID 159360)
+-- TOC entry 4745 (class 2606 OID 182499)
 -- Name: supplies supplies_pkey; Type: CONSTRAINT; Schema: wards; Owner: postgres
 --
 
@@ -1728,7 +1725,7 @@ ALTER TABLE ONLY wards.supplies
 
 
 --
--- TOC entry 4748 (class 2606 OID 159369)
+-- TOC entry 4748 (class 2606 OID 182508)
 -- Name: ward ward_pkey; Type: CONSTRAINT; Schema: wards; Owner: postgres
 --
 
@@ -1737,7 +1734,7 @@ ALTER TABLE ONLY wards.ward
 
 
 --
--- TOC entry 4765 (class 1259 OID 159609)
+-- TOC entry 4765 (class 1259 OID 182754)
 -- Name: patient_numbers; Type: INDEX; Schema: patients; Owner: postgres
 --
 
@@ -1745,7 +1742,7 @@ CREATE INDEX patient_numbers ON patients.patient USING btree (patient_number);
 
 
 --
--- TOC entry 4768 (class 1259 OID 159610)
+-- TOC entry 4768 (class 1259 OID 182755)
 -- Name: appointment_numbers; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1753,7 +1750,7 @@ CREATE INDEX appointment_numbers ON public.appointment USING btree (appointment_
 
 
 --
--- TOC entry 4773 (class 1259 OID 159611)
+-- TOC entry 4773 (class 1259 OID 182756)
 -- Name: bed_numbers; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1761,7 +1758,7 @@ CREATE INDEX bed_numbers ON public.inpatient USING btree (bed_number);
 
 
 --
--- TOC entry 4780 (class 1259 OID 159612)
+-- TOC entry 4780 (class 1259 OID 182757)
 -- Name: requisition_numbers; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1769,7 +1766,7 @@ CREATE INDEX requisition_numbers ON public.requisition USING btree (requisition_
 
 
 --
--- TOC entry 4760 (class 1259 OID 159613)
+-- TOC entry 4760 (class 1259 OID 182758)
 -- Name: unique_index_allocation_id; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1777,7 +1774,7 @@ CREATE UNIQUE INDEX unique_index_allocation_id ON public.allocation USING btree 
 
 
 --
--- TOC entry 4755 (class 1259 OID 159608)
+-- TOC entry 4755 (class 1259 OID 182753)
 -- Name: staff_numbers; Type: INDEX; Schema: staffs; Owner: postgres
 --
 
@@ -1785,7 +1782,7 @@ CREATE INDEX staff_numbers ON staffs.staff USING btree (staff_number);
 
 
 --
--- TOC entry 4746 (class 1259 OID 159607)
+-- TOC entry 4746 (class 1259 OID 182752)
 -- Name: ward_numbers; Type: INDEX; Schema: wards; Owner: postgres
 --
 
@@ -1793,7 +1790,7 @@ CREATE INDEX ward_numbers ON wards.ward USING btree (ward_number);
 
 
 --
--- TOC entry 4809 (class 2620 OID 159604)
+-- TOC entry 4809 (class 2620 OID 182749)
 -- Name: inpatient bed_limit_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -1801,7 +1798,7 @@ CREATE TRIGGER bed_limit_trigger BEFORE INSERT ON public.inpatient FOR EACH ROW 
 
 
 --
--- TOC entry 4808 (class 2620 OID 159606)
+-- TOC entry 4808 (class 2620 OID 182751)
 -- Name: allocation trigger_charge_nurse_in_wards; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -1809,7 +1806,7 @@ CREATE TRIGGER trigger_charge_nurse_in_wards BEFORE INSERT ON public.allocation 
 
 
 --
--- TOC entry 4807 (class 2620 OID 159602)
+-- TOC entry 4807 (class 2620 OID 182747)
 -- Name: ward ward_limit_trigger; Type: TRIGGER; Schema: wards; Owner: postgres
 --
 
@@ -1817,7 +1814,7 @@ CREATE TRIGGER ward_limit_trigger BEFORE INSERT ON wards.ward FOR EACH ROW EXECU
 
 
 --
--- TOC entry 4794 (class 2606 OID 159474)
+-- TOC entry 4794 (class 2606 OID 182613)
 -- Name: patient fk_doctor; Type: FK CONSTRAINT; Schema: patients; Owner: postgres
 --
 
@@ -1826,7 +1823,7 @@ ALTER TABLE ONLY patients.patient
 
 
 --
--- TOC entry 4795 (class 2606 OID 159469)
+-- TOC entry 4795 (class 2606 OID 182608)
 -- Name: patient fk_kin; Type: FK CONSTRAINT; Schema: patients; Owner: postgres
 --
 
@@ -1835,7 +1832,7 @@ ALTER TABLE ONLY patients.patient
 
 
 --
--- TOC entry 4799 (class 2606 OID 159513)
+-- TOC entry 4799 (class 2606 OID 182652)
 -- Name: inpatient fk_allocation; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1844,7 +1841,7 @@ ALTER TABLE ONLY public.inpatient
 
 
 --
--- TOC entry 4798 (class 2606 OID 159502)
+-- TOC entry 4798 (class 2606 OID 182641)
 -- Name: outpatient fk_appointment; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1853,7 +1850,7 @@ ALTER TABLE ONLY public.outpatient
 
 
 --
--- TOC entry 4800 (class 2606 OID 159518)
+-- TOC entry 4800 (class 2606 OID 182657)
 -- Name: inpatient fk_appointment; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1862,7 +1859,7 @@ ALTER TABLE ONLY public.inpatient
 
 
 --
--- TOC entry 4801 (class 2606 OID 159536)
+-- TOC entry 4801 (class 2606 OID 182675)
 -- Name: medication fk_bed_number; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1871,7 +1868,7 @@ ALTER TABLE ONLY public.medication
 
 
 --
--- TOC entry 4803 (class 2606 OID 159552)
+-- TOC entry 4803 (class 2606 OID 182691)
 -- Name: requisition fk_bed_number; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1880,7 +1877,7 @@ ALTER TABLE ONLY public.requisition
 
 
 --
--- TOC entry 4802 (class 2606 OID 159541)
+-- TOC entry 4802 (class 2606 OID 182680)
 -- Name: medication fk_drug; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1889,7 +1886,7 @@ ALTER TABLE ONLY public.medication
 
 
 --
--- TOC entry 4796 (class 2606 OID 159492)
+-- TOC entry 4796 (class 2606 OID 182631)
 -- Name: appointment fk_patient; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1898,7 +1895,7 @@ ALTER TABLE ONLY public.appointment
 
 
 --
--- TOC entry 4791 (class 2606 OID 159435)
+-- TOC entry 4791 (class 2606 OID 182574)
 -- Name: allocation fk_staff; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1907,7 +1904,7 @@ ALTER TABLE ONLY public.allocation
 
 
 --
--- TOC entry 4797 (class 2606 OID 159487)
+-- TOC entry 4797 (class 2606 OID 182626)
 -- Name: appointment fk_staff; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1916,7 +1913,7 @@ ALTER TABLE ONLY public.appointment
 
 
 --
--- TOC entry 4792 (class 2606 OID 159440)
+-- TOC entry 4792 (class 2606 OID 182579)
 -- Name: allocation fk_supply; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1925,7 +1922,7 @@ ALTER TABLE ONLY public.allocation
 
 
 --
--- TOC entry 4793 (class 2606 OID 159430)
+-- TOC entry 4793 (class 2606 OID 182569)
 -- Name: allocation fk_ward; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1934,7 +1931,7 @@ ALTER TABLE ONLY public.allocation
 
 
 --
--- TOC entry 4788 (class 2606 OID 159412)
+-- TOC entry 4788 (class 2606 OID 182551)
 -- Name: staff fk_contract; Type: FK CONSTRAINT; Schema: staffs; Owner: postgres
 --
 
@@ -1943,7 +1940,7 @@ ALTER TABLE ONLY staffs.staff
 
 
 --
--- TOC entry 4789 (class 2606 OID 159407)
+-- TOC entry 4789 (class 2606 OID 182546)
 -- Name: staff fk_experience; Type: FK CONSTRAINT; Schema: staffs; Owner: postgres
 --
 
@@ -1952,7 +1949,7 @@ ALTER TABLE ONLY staffs.staff
 
 
 --
--- TOC entry 4790 (class 2606 OID 159417)
+-- TOC entry 4790 (class 2606 OID 182556)
 -- Name: staff fk_qualification; Type: FK CONSTRAINT; Schema: staffs; Owner: postgres
 --
 
@@ -1961,7 +1958,7 @@ ALTER TABLE ONLY staffs.staff
 
 
 --
--- TOC entry 4804 (class 2606 OID 159578)
+-- TOC entry 4806 (class 2606 OID 182722)
 -- Name: patient_user patient_user_patient_number_fkey; Type: FK CONSTRAINT; Schema: users; Owner: postgres
 --
 
@@ -1970,7 +1967,7 @@ ALTER TABLE ONLY users.patient_user
 
 
 --
--- TOC entry 4805 (class 2606 OID 159641)
+-- TOC entry 4804 (class 2606 OID 182709)
 -- Name: staff_user staff_user_doctor_id_fkey; Type: FK CONSTRAINT; Schema: users; Owner: postgres
 --
 
@@ -1979,7 +1976,7 @@ ALTER TABLE ONLY users.staff_user
 
 
 --
--- TOC entry 4806 (class 2606 OID 159636)
+-- TOC entry 4805 (class 2606 OID 182704)
 -- Name: staff_user staff_user_staff_number_fkey; Type: FK CONSTRAINT; Schema: users; Owner: postgres
 --
 
@@ -1988,7 +1985,7 @@ ALTER TABLE ONLY users.staff_user
 
 
 --
--- TOC entry 4787 (class 2606 OID 159370)
+-- TOC entry 4787 (class 2606 OID 182509)
 -- Name: ward fk_supplier; Type: FK CONSTRAINT; Schema: wards; Owner: postgres
 --
 
@@ -1998,46 +1995,59 @@ ALTER TABLE ONLY wards.ward
 
 --
 -- TOC entry 4996 (class 0 OID 0)
--- Dependencies: 9
+-- Dependencies: 8
 -- Name: SCHEMA patients; Type: ACL; Schema: -; Owner: postgres
 --
 
 GRANT USAGE ON SCHEMA patients TO charge_nurse;
 GRANT USAGE ON SCHEMA patients TO doctor;
+GRANT USAGE ON SCHEMA patients TO staff;
 
 
 --
 -- TOC entry 4998 (class 0 OID 0)
--- Dependencies: 8
+-- Dependencies: 9
 -- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
 --
 
 REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 GRANT USAGE ON SCHEMA public TO charge_nurse;
+GRANT USAGE ON SCHEMA public TO staff;
 
 
 --
 -- TOC entry 4999 (class 0 OID 0)
--- Dependencies: 7
+-- Dependencies: 5
 -- Name: SCHEMA staffs; Type: ACL; Schema: -; Owner: postgres
 --
 
 GRANT USAGE ON SCHEMA staffs TO personnel_officer;
 GRANT USAGE ON SCHEMA staffs TO charge_nurse;
+GRANT USAGE ON SCHEMA staffs TO staff;
 
 
 --
 -- TOC entry 5000 (class 0 OID 0)
 -- Dependencies: 6
+-- Name: SCHEMA users; Type: ACL; Schema: -; Owner: postgres
+--
+
+GRANT USAGE ON SCHEMA users TO staff;
+
+
+--
+-- TOC entry 5001 (class 0 OID 0)
+-- Dependencies: 7
 -- Name: SCHEMA wards; Type: ACL; Schema: -; Owner: postgres
 --
 
 GRANT USAGE ON SCHEMA wards TO personnel_officer;
 GRANT USAGE ON SCHEMA wards TO charge_nurse;
+GRANT USAGE ON SCHEMA wards TO staff;
 
 
 --
--- TOC entry 5001 (class 0 OID 0)
+-- TOC entry 5002 (class 0 OID 0)
 -- Dependencies: 238
 -- Name: TABLE doctor; Type: ACL; Schema: patients; Owner: postgres
 --
@@ -2046,7 +2056,7 @@ GRANT SELECT ON TABLE patients.doctor TO staff;
 
 
 --
--- TOC entry 5002 (class 0 OID 0)
+-- TOC entry 5003 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: TABLE kin; Type: ACL; Schema: patients; Owner: postgres
 --
@@ -2056,7 +2066,7 @@ GRANT SELECT,UPDATE ON TABLE patients.kin TO doctor;
 
 
 --
--- TOC entry 5003 (class 0 OID 0)
+-- TOC entry 5004 (class 0 OID 0)
 -- Dependencies: 240
 -- Name: TABLE patient; Type: ACL; Schema: patients; Owner: postgres
 --
@@ -2067,17 +2077,18 @@ GRANT SELECT,UPDATE ON TABLE patients.patient TO doctor;
 
 
 --
--- TOC entry 5004 (class 0 OID 0)
+-- TOC entry 5005 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: TABLE allocation; Type: ACL; Schema: public; Owner: postgres
 --
 
 GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.allocation TO personnel_officer;
 GRANT SELECT,INSERT,UPDATE ON TABLE public.allocation TO charge_nurse;
+GRANT SELECT ON TABLE public.allocation TO staff;
 
 
 --
--- TOC entry 5005 (class 0 OID 0)
+-- TOC entry 5006 (class 0 OID 0)
 -- Dependencies: 242
 -- Name: TABLE appointment; Type: ACL; Schema: public; Owner: postgres
 --
@@ -2086,53 +2097,148 @@ GRANT SELECT ON TABLE public.appointment TO staff;
 
 
 --
--- TOC entry 5006 (class 0 OID 0)
+-- TOC entry 5007 (class 0 OID 0)
 -- Dependencies: 247
 -- Name: TABLE drug; Type: ACL; Schema: public; Owner: postgres
 --
 
 GRANT SELECT,INSERT,UPDATE ON TABLE public.drug TO charge_nurse;
+GRANT SELECT ON TABLE public.drug TO staff;
 
 
 --
--- TOC entry 5007 (class 0 OID 0)
+-- TOC entry 5008 (class 0 OID 0)
 -- Dependencies: 245
 -- Name: TABLE inpatient; Type: ACL; Schema: public; Owner: postgres
 --
 
 GRANT SELECT,INSERT,UPDATE ON TABLE public.inpatient TO charge_nurse;
+GRANT SELECT ON TABLE public.inpatient TO staff;
 
 
 --
--- TOC entry 5008 (class 0 OID 0)
+-- TOC entry 5009 (class 0 OID 0)
 -- Dependencies: 248
 -- Name: TABLE medication; Type: ACL; Schema: public; Owner: postgres
 --
 
 GRANT SELECT,INSERT,UPDATE ON TABLE public.medication TO charge_nurse;
+GRANT SELECT ON TABLE public.medication TO staff;
 
 
 --
--- TOC entry 5009 (class 0 OID 0)
+-- TOC entry 5010 (class 0 OID 0)
 -- Dependencies: 243
 -- Name: TABLE outpatient; Type: ACL; Schema: public; Owner: postgres
 --
 
 GRANT SELECT,INSERT,UPDATE ON TABLE public.outpatient TO personnel_officer;
+GRANT SELECT ON TABLE public.outpatient TO staff;
 
 
 --
--- TOC entry 5010 (class 0 OID 0)
+-- TOC entry 5011 (class 0 OID 0)
+-- Dependencies: 256
+-- Name: TABLE report_listing_of_outpatient; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT ON TABLE public.report_listing_of_outpatient TO staff;
+
+
+--
+-- TOC entry 5012 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: TABLE staff; Type: ACL; Schema: staffs; Owner: postgres
 --
 
 GRANT SELECT,INSERT,UPDATE ON TABLE staffs.staff TO personnel_officer;
 GRANT SELECT,UPDATE ON TABLE staffs.staff TO charge_nurse;
+GRANT SELECT ON TABLE staffs.staff TO staff;
 
 
 --
--- TOC entry 5011 (class 0 OID 0)
+-- TOC entry 5013 (class 0 OID 0)
+-- Dependencies: 255
+-- Name: TABLE report_listing_to_each_ward; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT ON TABLE public.report_listing_to_each_ward TO staff;
+
+
+--
+-- TOC entry 5014 (class 0 OID 0)
+-- Dependencies: 250
+-- Name: TABLE requisition; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT ON TABLE public.requisition TO staff;
+
+
+--
+-- TOC entry 5015 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: TABLE contract; Type: ACL; Schema: staffs; Owner: postgres
+--
+
+GRANT SELECT ON TABLE staffs.contract TO staff;
+
+
+--
+-- TOC entry 5016 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: TABLE experience; Type: ACL; Schema: staffs; Owner: postgres
+--
+
+GRANT SELECT ON TABLE staffs.experience TO staff;
+
+
+--
+-- TOC entry 5017 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: TABLE qualification; Type: ACL; Schema: staffs; Owner: postgres
+--
+
+GRANT SELECT ON TABLE staffs.qualification TO staff;
+
+
+--
+-- TOC entry 5018 (class 0 OID 0)
+-- Dependencies: 254
+-- Name: TABLE patient_user; Type: ACL; Schema: users; Owner: postgres
+--
+
+GRANT SELECT ON TABLE users.patient_user TO staff;
+
+
+--
+-- TOC entry 5019 (class 0 OID 0)
+-- Dependencies: 252
+-- Name: TABLE staff_user; Type: ACL; Schema: users; Owner: postgres
+--
+
+GRANT SELECT ON TABLE users.staff_user TO staff;
+
+
+--
+-- TOC entry 5020 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: TABLE supplier; Type: ACL; Schema: wards; Owner: postgres
+--
+
+GRANT SELECT ON TABLE wards.supplier TO staff;
+
+
+--
+-- TOC entry 5021 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: TABLE supplies; Type: ACL; Schema: wards; Owner: postgres
+--
+
+GRANT SELECT ON TABLE wards.supplies TO staff;
+
+
+--
+-- TOC entry 5022 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: TABLE ward; Type: ACL; Schema: wards; Owner: postgres
 --
@@ -2142,7 +2248,7 @@ GRANT SELECT ON TABLE wards.ward TO charge_nurse;
 GRANT SELECT ON TABLE wards.ward TO staff;
 
 
--- Completed on 2024-06-01 11:16:01
+-- Completed on 2024-06-13 15:36:03
 
 --
 -- PostgreSQL database dump complete
