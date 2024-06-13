@@ -1,3 +1,18 @@
+<?php
+$staffs = $connection->query("SELECT DISTINCT staff.staff_number, staff.firstname || ' ' || staff.lastname AS staff_name, staff.staff_position, allocation.shift FROM allocation
+        JOIN staffs.staff ON allocation.staff_number = staffs.staff.staff_number
+        WHERE ward_number = " . $ward_details['ward_number'])->fetchAll(PDO::FETCH_ASSOC);
+$patients = $connection->query("SELECT patient.patient_number, patient.firstname || ' ' || patient.lastname AS patient_name, 
+        inpatient.waiting_list_date, inpatient.expected_stay, inpatient.date_placed, inpatient.date_expected_to_leave,
+        inpatient.date_actual_left
+        FROM inpatient
+        JOIN allocation ON inpatient.allocation_id = allocation.allocation_id
+        JOIN appointment ON inpatient.appointment_number = appointment.appointment_number
+        JOIN patients.patient ON appointment.patient_number = patients.patient.patient_number
+        WHERE ward_number = " . $ward_details['ward_number'])->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!-- Ward -->
 <div class="flex flex-row justify-between my-2 items-end">
   <h1 class="text-xl text-slate-700 font-[700]">Ward <?php echo $ward_details['ward_number']; ?></h1>
@@ -13,19 +28,12 @@
   <h1 class='font-[700] text-slate-600'>Staff Name</h1>
   <h1 class='font-[700] text-slate-600'>Staff Position</h1>
   <h1 class='font-[700] text-slate-600'>Shift</h1>
-  <?php
-  $staffs = $connection->query("SELECT DISTINCT staff.staff_number, staff.firstname || ' ' || staff.lastname AS staff_name, staff.staff_position, allocation.shift FROM allocation
-        JOIN staffs.staff ON allocation.staff_number = staffs.staff.staff_number
-        WHERE ward_number = " . $ward_details['ward_number'])->fetchAll(PDO::FETCH_ASSOC);
-  foreach ($staffs as $staff) {
-    echo "
-          <p class='text-slate-700'>" . $staff['staff_number'] . "</p>
-          <p class='text-slate-700'>" . $staff['staff_name'] . "</p>
-          <p class='text-slate-700'>" . $staff['staff_position'] . "</p>
-          <p class='text-slate-700'>" . $staff['shift'] . "</p>
-          ";
-  }
-  ?>
+  <?php foreach ($staffs as $staff) : ?>
+    <p class='text-slate-700'><?= htmlspecialchars($staff['staff_number']) ?></p>
+    <p class='text-slate-700'><?= htmlspecialchars($staff['staff_name']) ?></p>
+    <p class='text-slate-700'><?= htmlspecialchars($staff['staff_position']) ?></p>
+    <p class='text-slate-700'><?= htmlspecialchars($staff['shift']) ?></p>
+  <?php endforeach; ?>
 </div>
 
 <!-- Inpatients -->
@@ -44,30 +52,17 @@
   <h1 class='font-[700] text-slate-600'>Date Placed</h1>
   <h1 class='font-[700] text-slate-600'>Date Expected to Leave</h1>
   <h1 class='font-[700] text-slate-600'>Date Actual Leave</h1>
-  <?php
-  $patients = $connection->query("SELECT patient.patient_number, patient.firstname || ' ' || patient.lastname AS patient_name, 
-        inpatient.waiting_list_date, inpatient.expected_stay, inpatient.date_placed, inpatient.date_expected_to_leave,
-        inpatient.date_actual_left
-        FROM inpatient
-        JOIN allocation ON inpatient.allocation_id = allocation.allocation_id
-        JOIN appointment ON inpatient.appointment_number = appointment.appointment_number
-        JOIN patients.patient ON appointment.patient_number = patients.patient.patient_number
-        WHERE ward_number = " . $ward_details['ward_number'])->fetchAll(PDO::FETCH_ASSOC);
-
-  if (count($patients) == 0) {
-    echo "<h1 class='font-[400] text-slate-600 text-xl col-span-7'>No inpatients on ward " . $ward_details['ward_number'] . ".</h1>";
-  } else {
-    foreach ($patients as $patient) {
-      echo "
-            <p class='text-slate-700'>" . $patient['patient_number'] . "</p>
-            <p class='text-slate-700'>" . $patient['patient_name'] . "</p>
-            <p class='text-slate-700'>" . $patient['waiting_list_date'] . "</p>
-            <p class='text-slate-700'>" . $patient['expected_stay'] . "</p>
-            <p class='text-slate-700'>" . $patient['date_placed'] . "</p>
-            <p class='text-slate-700'>" . ($patient['date_expected_to_leave']) . "</p>
-            <p class='text-slate-700'>" . ($patient['date_actual_left']) . "</p>
-          ";
-    }
-  }
-  ?>
+  <?php if (count($patients) == 0) : ?>
+    <h1 class='font-[400] text-slate-600 text-xl col-span-7'>No inpatients on ward <?= htmlspecialchars($ward_details['ward_number']) ?>.</h1>
+  <?php else : ?>
+    <?php foreach ($patients as $patient) : ?>
+      <p class='text-slate-700'><?= htmlspecialchars($patient['patient_number']) ?></p>
+      <p class='text-slate-700'><?= htmlspecialchars($patient['patient_name']) ?></p>
+      <p class='text-slate-700'><?= htmlspecialchars($patient['waiting_list_date']) ?></p>
+      <p class='text-slate-700'><?= htmlspecialchars($patient['expected_stay']) ?></p>
+      <p class='text-slate-700'><?= htmlspecialchars($patient['date_placed']) ?></p>
+      <p class='text-slate-700'><?= htmlspecialchars($patient['date_expected_to_leave']) ?></p>
+      <p class='text-slate-700'><?= htmlspecialchars($patient['date_actual_left']) ?></p>
+    <?php endforeach; ?>
+  <?php endif; ?>
 </div>

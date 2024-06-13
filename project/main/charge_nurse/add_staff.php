@@ -13,7 +13,8 @@ if ($connection) {
   $ward_details = getWardDetails($connection, $staff_number);
 
   $staffs = $connection->query("SELECT staff_number, firstname || ' ' || lastname AS staff_name FROM staffs.staff
-  WHERE staff_position != 'Medical Director' AND staff_position != 'Charge Nurse'")->fetchAll();
+WHERE staff_position != 'Medical Director' AND staff_position != 'Charge Nurse'
+ORDER BY staff_number ASC")->fetchAll();
 
   $shifts = array("Early", "Late", "Night");
 }
@@ -31,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     header("Location: ../index.php");
     exit();
-
   } catch (Exception $e) {
     $connection->rollBack();
     $e->getMessage();
@@ -58,29 +58,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="flex flex-col gap-2">
         <div class="flex flex-col gap-2">
           <h1 class="text-slate-800">Staff Number</h1>
-          <select name="selected_staff_number"
-            class="p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700">
-            <?php
-            foreach ($staffs as $staff) {
-              echo "<option value=" . $staff['staff_number'] . ">" . $staff['staff_number'] . " - " . $staff['staff_name'] . "</option>";
-            }
-            ?>
+          <select name="selected_staff_number" class="p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700">
+            <?php foreach ($staffs as $staff) : ?>
+              <option value="<?= htmlspecialchars($staff['staff_number']) ?>">
+                <?= htmlspecialchars($staff['staff_number']) ?> - <?= htmlspecialchars($staff['staff_name']) ?>
+              </option>
+            <?php endforeach; ?>
           </select>
         </div>
         <div class="flex flex-col gap-2">
           <h1 class="text-slate-800">Shift</h1>
-          <select name="selected_shift"
-            class="p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700">
-            <?php
-            foreach ($shifts as $shift) {
-              echo "<option value=" . $shift . ">" . $shift . "</option>";
-            }
-            ?>
+          <select name="selected_shift" class="p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700">
+            <?php foreach ($shifts as $shift) : ?>
+              <option value="<?= htmlspecialchars($shift) ?>"><?= htmlspecialchars($shift) ?></option>
+            <?php endforeach; ?>
           </select>
         </div>
-        <input type="submit"
-          class="bg-slate-300 cursor-pointer rounded-lg p-2 text-slate-600 text-center transition-all duration-250 delay-0 ease-in-out hover:bg-slate-400 hover:text-slate-100 hover:shadow-lg"
-          value="Add" />
+        <input type="submit" class="bg-slate-300 cursor-pointer rounded-lg p-2 text-slate-600 text-center transition-all duration-250 delay-0 ease-in-out hover:bg-slate-400 hover:text-slate-100 hover:shadow-lg" value="Add" />
       </form>
     </div>
   </main>

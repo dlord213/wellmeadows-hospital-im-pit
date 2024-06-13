@@ -16,7 +16,6 @@ if ($connection) {
 
   $patients = $connection->query("SELECT appointment.appointment_number, patient.patient_number, firstname || ' ' || lastname AS patient_name FROM appointment
   JOIN patients.patient ON appointment.patient_number = patient.patient_number")->fetchAll(PDO::FETCH_ASSOC);
-
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -69,34 +68,27 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="flex flex-col gap-2">
         <div class="flex flex-col gap-2">
           <h1 class="text-slate-800">Patient Number</h1>
-          <select name="selected_appointment_number"
-            class="p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700">
-            <?php
-            foreach ($patients as $patient) {
-              echo "<option value=" . $patient['appointment_number'] . ">" . $patient['patient_number'] . " - " . $patient['patient_name'] . "</option>";
-            }
-            ?>
+          <select name="selected_appointment_number" class="p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700">
+            <?php foreach ($patients as $patient) : ?>
+              <option value="<?= htmlspecialchars($patient['appointment_number']) ?>">
+                <?= htmlspecialchars($patient['patient_number']) ?> - <?= htmlspecialchars($patient['patient_name']) ?>
+              </option>
+            <?php endforeach; ?>
           </select>
         </div>
         <div class="flex flex-col gap-2">
           <h1 class="text-slate-800">On Waiting List (Date)</h1>
-          <input type="date" name="on_waiting_list_date"
-            class="p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700" />
+          <input type="date" name="on_waiting_list_date" class="p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700" />
         </div>
         <div class="flex flex-col gap-2">
           <h1 class="text-slate-800">Date Placed (Or will be placed)</h1>
-          <input type="date" name="date_placed_input"
-            class="p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700" />
+          <input type="date" name="date_placed_input" class="p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700" />
         </div>
         <div class="flex flex-col gap-2">
           <h1 class="text-slate-800">Expected Stay (Days)</h1>
-          <input type="number" name="expected_stay_input"
-            class="p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700"
-            min="1" />
+          <input type="number" name="expected_stay_input" class="p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700" min="1" />
         </div>
-        <input type="submit"
-          class="bg-slate-300 cursor-pointer rounded-lg p-2 text-slate-600 text-center transition-all duration-250 delay-0 ease-in-out hover:bg-slate-400 hover:text-slate-100 hover:shadow-lg"
-          value="Update" />
+        <input type="submit" class="bg-slate-300 cursor-pointer rounded-lg p-2 text-slate-600 text-center transition-all duration-250 delay-0 ease-in-out hover:bg-slate-400 hover:text-slate-100 hover:shadow-lg" value="Update" />
       </form>
     </div>
   </main>

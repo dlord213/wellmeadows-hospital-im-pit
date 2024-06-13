@@ -7,6 +7,3 @@ $staff_name = $_SESSION['staff_name'];
 $staff_position = $_SESSION['staff_position'];
 
 $connection = connectToDatabase($staff_position);
-
-
-?>

@@ -13,6 +13,9 @@ function connectToDatabase($staff_position)
   } elseif ($staff_position == 'Doctor') {
     $username = "doctor";
     $password = "doctor";
+  } else {
+    $username = "staff";
+    $password = "staff";
   }
 
   try {
@@ -20,6 +23,4 @@ function connectToDatabase($staff_position)
   } catch (PDOException $e) {
     die($e->getMessage());
   }
-
 }
-?>

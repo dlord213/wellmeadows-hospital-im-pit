@@ -15,5 +15,3 @@ function getPatientMedication($connection, $bed_number)
     WHERE medication.bed_number = $bed_number
 ")->fetchAll(PDO::FETCH_ASSOC);
 }
-
-?>

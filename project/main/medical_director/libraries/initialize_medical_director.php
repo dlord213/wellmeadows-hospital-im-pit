@@ -26,7 +26,5 @@ if ($staff_position == 'Medical Director') {
     JOIN patients.patient ON appointment.patient_number = patient.patient_number")->fetchAll(PDO::FETCH_ASSOC);
 
     $patient_medication_details = getPatientMedication($connection, $inpatient_number);
-
   }
 }
-?>
