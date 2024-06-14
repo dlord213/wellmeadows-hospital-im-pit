@@ -7,6 +7,7 @@
         <p class="text-slate-600"><b>Address:</b> <?= htmlspecialchars($doctor_address) ?></p>
         <p class="text-slate-600"><b>Telephone Number:</b> <?= htmlspecialchars($doctor_tel_number) ?></p>
       <?php elseif ($staff_position == 'Charge Nurse') : ?>
+        <p class="text-slate-600"><b>Staff:</b> <?= htmlspecialchars($staff_name) ?> (S - <?= htmlspecialchars($staff_number) ?>) / <?= htmlspecialchars($staff_position) ?></p>
         <p class="text-slate-600"><b>In charge of ward number:</b> W<?= htmlspecialchars($ward_details['ward_number']) ?> - <?= htmlspecialchars($ward_details['ward_name']) ?> / <?= htmlspecialchars($ward_details['ward_location']) ?> - <?= htmlspecialchars($ward_details['telephone_ext_number']) ?></p>
       <?php elseif ($staff_position == 'Medical Director') : ?>
         <p class="text-slate-600"><b>Staff:</b> <?= htmlspecialchars($staff_name) ?> (S - <?= htmlspecialchars($staff_number) ?>) / <?= htmlspecialchars($staff_position) ?></p>
