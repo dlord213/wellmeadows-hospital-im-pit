@@ -45,7 +45,7 @@
 <div class="hidden md:flex flex-row justify-between my-2 items-end">
   <h1 class="text-xl text-slate-700 font-[700]">Inpatients on Ward <?php echo $ward_details['ward_number']; ?></h1>
 </div>
-<div class="hidden md:grid grid-cols-7 bg-slate-200 p-4 rounded-lg">
+<div class="hidden md:grid grid-cols-5 bg-slate-200 p-4 rounded-lg">
   <?php
   $ward_number = intval($ward_details['ward_number']); // Ensure the ward number is an integer to prevent SQL injection
 
@@ -75,16 +75,12 @@
     <h1 class="font-[700] text-slate-600">On Waiting List</h1>
     <h1 class="font-[700] text-slate-600">Expected Stay (Days)</h1>
     <h1 class="font-[700] text-slate-600">Date Placed</h1>
-    <h1 class="font-[700] text-slate-600">Date Expected to Leave</h1>
-    <h1 class="font-[700] text-slate-600">Date Actual Leave</h1>
     <?php foreach ($patients as $patient) : ?>
       <p class="text-slate-700"><?= htmlspecialchars($patient['patient_number']) ?></p>
       <p class="text-slate-700"><?= htmlspecialchars($patient['patient_name']) ?></p>
       <p class="text-slate-700"><?= htmlspecialchars($patient['waiting_list_date']) ?></p>
       <p class="text-slate-700"><?= htmlspecialchars($patient['expected_stay']) ?></p>
       <p class="text-slate-700"><?= htmlspecialchars($patient['date_placed']) ?></p>
-      <p class="text-slate-700"><?= htmlspecialchars($patient['date_expected_to_leave']) ?></p>
-      <p class="text-slate-700"><?= htmlspecialchars($patient['date_actual_left']) ?></p>
     <?php endforeach; ?>
   <?php endif; ?>
 </div>
@@ -128,24 +124,27 @@
   <h1 class="text-xl text-slate-700 font-[700]">Items/Supplies used on Ward <?php echo $ward_details['ward_number']; ?>
   </h1>
 </div>
-<div class="hidden md:grid grid-cols-3 bg-slate-200 p-4 rounded-lg">
+<div class="hidden md:grid grid-cols-4 bg-slate-200 p-4 rounded-lg">
   <?php
   $supplies = $connection->query(
-    "SELECT ward_number, supplies.item_name, supplies.description, supplies.reorder_level 
-     FROM allocation
-     JOIN wards.supplies ON allocation.supply_id = supplies.supply_id
-     WHERE ward_number = " . intval($ward_details['ward_number'])
+    "SELECT ward_number, staffs.staff.firstname || ' ' || staffs.staff.lastname AS staff_name, supplies.item_name, supplies.description, supplies.reorder_level 
+      FROM allocation
+      JOIN wards.supplies ON allocation.supply_id = supplies.supply_id
+	    JOIN staffs.staff ON allocation.staff_number = staffs.staff.staff_number
+      WHERE ward_number = " . intval($ward_details['ward_number'])
   )->fetchAll(PDO::FETCH_ASSOC);
   ?>
   <?php if (count($supplies) == 0) : ?>
-    <h1 class="font-[400] text-slate-600 text-xl col-span-3">
+    <h1 class="font-[400] text-slate-600 text-xl col-span-4">
       No items/supplies on ward <?= htmlspecialchars($ward_details['ward_number']) ?>.
     </h1>
   <?php else : ?>
+    <h1 class="font-[700] text-slate-600">Staff Name</h1>
     <h1 class="font-[700] text-slate-600">Item Name</h1>
     <h1 class="font-[700] text-slate-600">Item Description</h1>
     <h1 class="font-[700] text-slate-600">Item Reorder Level</h1>
     <?php foreach ($supplies as $item) : ?>
+      <p class="text-slate-700"><?= htmlspecialchars($item['staff_name']) ?></p>
       <p class="text-slate-700"><?= htmlspecialchars($item['item_name']) ?></p>
       <p class="text-slate-700"><?= htmlspecialchars($item['description']) ?></p>
       <p class="text-slate-700"><?= htmlspecialchars($item['reorder_level']) ?></p>
