@@ -1,3 +1,16 @@
+<?php if ($staff_position == "Medical Director" or $staff_position == "Personnel Officer") : ?>
+  <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="GET" name="ward_form" class="lg:hidden flex flex-row gap-2 w-full mb-2">
+    <select name="ward_form[ward_number]" class="w-full p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700">
+      <?php foreach ($wards as $ward) : ?>
+        <option value="<?= htmlspecialchars($ward['ward_number']) ?>" <?= isset($ward_details['ward_number']) && $ward_details['ward_number'] == $ward['ward_number'] ? 'selected' : '' ?>>
+          <?= htmlspecialchars($ward['ward_number']) ?> - <?= htmlspecialchars($ward['ward_name']) ?>
+        </option>
+      <?php endforeach; ?>
+    </select>
+    <input type="submit" value="View ward" class="cursor-pointer bg-slate-300 rounded-lg p-2 text-slate-600 text-center transition-all duration-250 delay-0 ease-in-out hover:bg-slate-400 hover:text-slate-100 hover:shadow-lg" />
+  </form>
+<?php endif; ?>
+
 <!-- Ward -->
 <div class="hidden md:flex flex-row justify-between my-2 items-end">
   <h1 class="text-xl text-slate-700 font-[700]">Staffs on Ward <?php echo $ward_details['ward_number']; ?></h1>
