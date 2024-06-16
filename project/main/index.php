@@ -24,14 +24,15 @@ if ($staff_position == 'Charge Nurse') {
 } elseif ($staff_position == 'Medical Director') {
   require './medical_director/libraries/get_patient_medication.php';
   require './medical_director/libraries/initialize_medical_director.php';
+} elseif ($staff_position == 'Personnel Officer') {
+  require './personnel_officer/libraries/initialize_personnel_officer.php';
 }
 
-if (!in_array($staff_position, ['Doctor', 'Medical Director', 'Charge Nurse'])) {
+if (!in_array($staff_position, ['Doctor', 'Medical Director', 'Charge Nurse', 'Personnel Officer'])) {
   $ward_details = $connection->query("SELECT ward.ward_number, ward_name FROM allocation 
     JOIN wards.ward ON allocation.ward_number = wards.ward.ward_number
     WHERE staff_number = " . $_SESSION['staff_number'])->fetch(PDO::FETCH_ASSOC);
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +58,9 @@ if (!in_array($staff_position, ['Doctor', 'Medical Director', 'Charge Nurse'])) 
         break;
       case 'Doctor':
         require './doctor/doctor_dashboard_component.php';
+        break;
+      case 'Personnel Officer':
+        require './personnel_officer/personnel_officer_dashboard_component.php';
         break;
       default:
         require './staff/staff_dashboard_component.php';

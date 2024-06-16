@@ -8,8 +8,10 @@
         <p class="text-slate-600"><b>Telephone Number:</b> <?= htmlspecialchars($doctor_tel_number) ?></p>
       <?php elseif ($staff_position == 'Charge Nurse') : ?>
         <p class="text-slate-600"><b>Staff:</b> <?= htmlspecialchars($staff_name) ?> (S - <?= htmlspecialchars($staff_number) ?>) / <?= htmlspecialchars($staff_position) ?></p>
-        <p class="text-slate-600"><b>In charge of ward number:</b> W<?= htmlspecialchars($ward_details['ward_number']) ?> - <?= htmlspecialchars($ward_details['ward_name']) ?> / <?= htmlspecialchars($ward_details['ward_location']) ?> - <?= htmlspecialchars($ward_details['telephone_ext_number']) ?></p>
+        <p class="text-slate-600"><b>In charge of ward number:</b> W<?= htmlspecialchars($ward_details['ward_number']) ?> - <?= htmlspecialchars($ward_details['ward_name']) ?></p>
       <?php elseif ($staff_position == 'Medical Director') : ?>
+        <p class="text-slate-600"><b>Staff:</b> <?= htmlspecialchars($staff_name) ?> (S - <?= htmlspecialchars($staff_number) ?>) / <?= htmlspecialchars($staff_position) ?></p>
+      <?php elseif ($staff_position == 'Personnel Officer') : ?>
         <p class="text-slate-600"><b>Staff:</b> <?= htmlspecialchars($staff_name) ?> (S - <?= htmlspecialchars($staff_number) ?>) / <?= htmlspecialchars($staff_position) ?></p>
       <?php else : ?>
         <p class="text-slate-600"><b>Staff:</b> <?= htmlspecialchars($staff_name) ?> (S - <?= htmlspecialchars($staff_number) ?>) / <?= htmlspecialchars($staff_position) ?></p>
@@ -19,11 +21,13 @@
       <button onclick="window.location.href='./libraries/logout.php';" class="md:hidden bg-slate-300 w-full mt-2 rounded-lg p-2 text-slate-600 text-center transition-all duration-250 delay-0 ease-in-out hover:bg-slate-400 hover:text-slate-100 hover:shadow-lg">Logout</button>
     </div>
     <div class="hidden md:flex flex-row items-center gap-4">
-      <?php if ($staff_position == "Medical Director") : ?>
+      <?php if ($staff_position == "Medical Director" or $staff_position == "Personnel Officer") : ?>
         <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="GET" name="ward_form">
           <select name="ward_form[ward_number]" class="p-2 rounded-md shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-2 text-slate-700">
             <?php foreach ($wards as $ward) : ?>
-              <option value="<?= htmlspecialchars($ward['ward_number']) ?>"><?= htmlspecialchars($ward['ward_number']) ?> - <?= htmlspecialchars($ward['ward_name']) ?></option>
+              <option value="<?= htmlspecialchars($ward['ward_number']) ?>" <?= isset($ward_details['ward_number']) && $ward_details['ward_number'] == $ward['ward_number'] ? 'selected' : '' ?>>
+                <?= htmlspecialchars($ward['ward_number']) ?> - <?= htmlspecialchars($ward['ward_name']) ?>
+              </option>
             <?php endforeach; ?>
           </select>
           <input type="submit" value="View ward" class="cursor-pointer bg-slate-300 rounded-lg p-2 text-slate-600 text-center transition-all duration-250 delay-0 ease-in-out hover:bg-slate-400 hover:text-slate-100 hover:shadow-lg" />

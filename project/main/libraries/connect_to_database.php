@@ -13,6 +13,9 @@ function connectToDatabase($staff_position)
   } elseif ($staff_position == 'Doctor') {
     $username = "doctor";
     $password = "doctor";
+  } elseif ($staff_position == 'Personnel Officer') {
+    $username = "personnel_officer";
+    $password = "officer";
   } else {
     $username = "staff";
     $password = "staff";
