@@ -32,7 +32,7 @@
 <div class="hidden md:flex flex-row justify-between my-2 items-end">
   <h1 class="text-xl text-slate-700 font-[700]">Inpatients on Ward <?php echo $ward_details['ward_number']; ?></h1>
 </div>
-<div class="hidden md:grid grid-cols-7 bg-slate-200 p-4 rounded-lg">
+<div class="hidden md:grid grid-cols-5 bg-slate-200 p-4 rounded-lg">
   <?php
   $patients = $connection->query(
     "SELECT patient.patient_number, 
@@ -60,16 +60,12 @@
     <h1 class="font-[700] text-slate-600">On Waiting List</h1>
     <h1 class="font-[700] text-slate-600">Expected Stay (Days)</h1>
     <h1 class="font-[700] text-slate-600">Date Placed</h1>
-    <h1 class="font-[700] text-slate-600">Date Expected to Leave</h1>
-    <h1 class="font-[700] text-slate-600">Date Actual Leave</h1>
     <?php foreach ($patients as $patient) : ?>
       <p class="text-slate-700"><?= htmlspecialchars($patient['patient_number']) ?></p>
       <p class="text-slate-700"><?= htmlspecialchars($patient['patient_name']) ?></p>
       <p class="text-slate-700"><?= htmlspecialchars($patient['waiting_list_date']) ?></p>
       <p class="text-slate-700"><?= htmlspecialchars($patient['expected_stay']) ?></p>
       <p class="text-slate-700"><?= htmlspecialchars($patient['date_placed']) ?></p>
-      <p class="text-slate-700"><?= htmlspecialchars($patient['date_expected_to_leave']) ?></p>
-      <p class="text-slate-700"><?= htmlspecialchars($patient['date_actual_left']) ?></p>
     <?php endforeach; ?>
   <?php endif; ?>
 </div>

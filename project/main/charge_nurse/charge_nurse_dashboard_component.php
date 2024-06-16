@@ -50,14 +50,12 @@ $history = $connection->query("SELECT staff.staff_number, staff.firstname || ' '
       patient</a>
   </div>
 </div>
-<div class="grid grid-cols-7 bg-slate-200 p-4 rounded-lg">
+<div class="grid grid-cols-5 bg-slate-200 p-4 rounded-lg">
   <h1 class='font-[700] text-slate-600'>Patient Number</h1>
   <h1 class='font-[700] text-slate-600'>Patient Name</h1>
   <h1 class='font-[700] text-slate-600'>On Waiting List</h1>
   <h1 class='font-[700] text-slate-600'>Expected Stay (Days)</h1>
   <h1 class='font-[700] text-slate-600'>Date Placed</h1>
-  <h1 class='font-[700] text-slate-600'>Date Expected to Leave</h1>
-  <h1 class='font-[700] text-slate-600'>Date Actual Leave</h1>
   <?php if (count($patients) == 0) : ?>
     <h1 class='font-[400] text-slate-600 text-xl col-span-7'>No inpatients on ward <?= htmlspecialchars($ward_details['ward_number']) ?>.</h1>
   <?php else : ?>
@@ -67,8 +65,6 @@ $history = $connection->query("SELECT staff.staff_number, staff.firstname || ' '
       <p class='text-slate-700'><?= htmlspecialchars($patient['waiting_list_date']) ?></p>
       <p class='text-slate-700'><?= htmlspecialchars($patient['expected_stay']) ?></p>
       <p class='text-slate-700'><?= htmlspecialchars($patient['date_placed']) ?></p>
-      <p class='text-slate-700'><?= htmlspecialchars($patient['date_expected_to_leave']) ?></p>
-      <p class='text-slate-700'><?= htmlspecialchars($patient['date_actual_left']) ?></p>
     <?php endforeach; ?>
   <?php endif; ?>
 </div>
